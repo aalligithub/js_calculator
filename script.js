@@ -48,7 +48,12 @@ class Calculator{
             case '÷':
                 computation = prev / current
                 break
+            default:
+                return
         }
+        this.currentOperand = computation
+        this.operation = undefined
+        this.previousOperand = ''
     }
 
     updateDisplay() {
@@ -83,5 +88,10 @@ operationButtons.forEach(button => {
 
 equalsButtons.addEventListener('click', () => {
     calculator.compute()
+    calculator.updateDisplay()
+})
+
+allClearButtons.addEventListener('click', () => {
+    calculator.clear()
     calculator.updateDisplay()
 })
